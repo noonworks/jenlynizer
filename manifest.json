@@ -1,0 +1,12 @@
+{
+  "manifest_version": 2,
+  
+  "name": "Jenlynizer",
+  "version": "0.0.1",
+  "description": "Jenlynize all.",
+  "author": "@noonworks",
+  
+  "browser_action": {
+    "default_title": "Jenlynizer"
+  }
+}
