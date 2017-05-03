@@ -8,5 +8,17 @@
   
   "browser_action": {
     "default_title": "Jenlynizer"
-  }
+  },
+  
+  "background": { "scripts": ["js/background.js"] },
+  
+  "content_scripts": [
+    {
+      "matches": ["https://twitter.com/*"],
+      "js": ["js/jenlynize.js"],
+      "run_at": "document_start"
+    }
+  ],
+  
+  "options_page": "options.html"
 }

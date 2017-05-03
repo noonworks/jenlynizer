@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Jenlynizer Options</title>
+<style>
+input[type=url] {
+  width: 20em;
+}
+</style>
+</head>
+<body>
+<h1>Jenlynizer Options</h1>
+<table>
+  <tr>
+    <th><label for="fullname">名前</label></th>
+    <td><input id="fullname" type="text" value="" /></td>
+  </tr>
+  <tr>
+    <th><label for="accountid">ID</label></th>
+    <td><input id="accountid" type="text" value="" /></td>
+  </tr>
+  <tr>
+    <th><label for="iconUrl">アイコン画像URL</label></th>
+    <td>
+      <input id="iconUrl" type="url" value="" />
+    </td>
+  </tr>
+</table>
+<button id="save">保存</button>
+<p>※画面を再読み込みすると全体に反映されます。</p>
+<script src="js/options.js"></script>
+</body>
+</html>
