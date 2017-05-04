@@ -6,6 +6,10 @@
   "description": "Jenlynize all.",
   "author": "@noonworks",
   
+  "icons" : {
+    "96": "img/i96.png"
+  },
+  
   "browser_action": {
     "default_title": "Jenlynizer"
   },

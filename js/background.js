@@ -7,10 +7,14 @@ function readEnable() {
   return (str === 'true');
 }
 
+function setIcon(e) {
+  chrome.browserAction.setIcon({ path:'img/i96' + (e ? '' : 'off') + '.png' });
+}
+
 function iconClicked() {
   enable = !enable;
   saveEnable(enable);
-  chrome.browserAction.setBadgeText({text: enable ? 'on' : 'off'});
+  setIcon(enable);
 }
 
 function getOption() {
@@ -42,5 +46,5 @@ var DEFAULT_VALUE = {
 
 var enable = readEnable();
 saveEnable(enable);
-chrome.browserAction.setBadgeText({text: enable ? 'on' : 'off'});
+setIcon(enable);
 chrome.browserAction.onClicked.addListener(iconClicked);
