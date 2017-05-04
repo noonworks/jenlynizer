@@ -132,8 +132,21 @@
     [].forEach.call(body.getElementsByClassName('activity-user-profile-content'), function(value, key) {
       jenlynizeTweet(value, jen);
     });
+    [].forEach.call(body.getElementsByClassName('typeahead-account-item'), function(value, key) {
+      jenlynizeTweet(value, jen);
+    });
     [].forEach.call(body.getElementsByClassName('ProfileCard'), function(value, key) {
       jenlynizeProfileCard(value, jen);
+    });
+    [].forEach.call(body.getElementsByClassName('user-profile-link'), function(value, key) {
+      if (value.classList.contains(jenlynized)) return;
+      var n = value.getElementsByTagName("b");
+      if (n && n.length >= 1) {
+        n[0].innerText = jen.name;
+      } else {
+        value.innerText = jen.name;
+      }
+      value.classList.add(jenlynized);
     });
   }
   
@@ -168,5 +181,5 @@
   var updating = false;
   var jen = {};
   var enable = 'dummy';
-  initialize();
+  document.addEventListener('DOMContentLoaded', initialize);
 })();
