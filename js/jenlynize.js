@@ -73,6 +73,17 @@
       value.src = jen.avater;
       value.classList.add(jenlynized);
     });
+    [].forEach.call(body.getElementsByClassName('ProfileNameTruncated'), function(value, key) {
+      if (value.classList.contains(jenlynized)) return;
+      var n = value.getElementsByTagName("a");
+      if (n && n.length >= 1) n[0].innerText = jen.name;
+      value.classList.add(jenlynized);
+    });
+    [].forEach.call(body.getElementsByClassName('ProfileCardMini-avatarImage'), function(value, key) {
+      if (value.classList.contains(jenlynized)) return;
+      value.src = jen.avater;
+      value.classList.add(jenlynized);
+    });
     // List
     [].forEach.call(body.getElementsByClassName('ListFollowCard-metadata'), function(value, key) {
       if (value.classList.contains(jenlynized)) return;
