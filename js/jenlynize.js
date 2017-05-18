@@ -1,10 +1,12 @@
 (function(){
+  const JENLYNIZED = 'jenlynized';
+  
   function ignoreJenlynized(path) {
-    return path + ':not(.' + jenlynized + ')';
+    return path + ':not(.' + JENLYNIZED + ')';
   }
   
   function markJenlynized(e) {
-    e.classList.add(jenlynized);
+    e.classList.add(JENLYNIZED);
   }
   
   function jenlynizeTweet(tweet, jen) {
@@ -168,7 +170,6 @@
     window.setInterval(syncState, 100);
   }
   
-  var jenlynized = 'jenlynized';
   var intervalID = -1;
   var updating = false;
   var jen = {};
