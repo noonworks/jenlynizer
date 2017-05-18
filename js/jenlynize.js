@@ -14,7 +14,7 @@
       value.innerText = jen.name;
     });
     [].forEach.call(tweet.querySelectorAll('.username'), function(value, key) {
-      var n = value.querySelectorAll("b");
+      var n = value.querySelectorAll('b');
       if (n && n.length >= 1) n[0].innerText = jen.id;
     });
     [].forEach.call(tweet.querySelectorAll('.avatar'), function(value, key) {
@@ -22,7 +22,7 @@
     });
     // RT
     [].forEach.call(tweet.querySelectorAll('.js-retweet-text'), function(value, key) {
-      var n = value.querySelectorAll("b");
+      var n = value.querySelectorAll('b');
       if (n && n.length >= 1) n[0].innerText = jen.name;
     });
     [].forEach.call(tweet.querySelectorAll('.QuoteTweet-fullname'), function(value, key) {
@@ -36,7 +36,7 @@
       value.innerText = jen.name;
     });
     [].forEach.call(card.querySelectorAll('.username'), function(value, key) {
-      var n = value.querySelectorAll("b");
+      var n = value.querySelectorAll('b');
       if (n && n.length >= 1) n[0].innerText = jen.id;
     });
     [].forEach.call(card.querySelectorAll('.ProfileCard-avatarImage'), function(value, key) {
@@ -48,12 +48,12 @@
   function jenlynizeHeaders(body, jen) {
     // home
     [].forEach.call(body.querySelectorAll(ignoreJenlynized('.DashboardProfileCard-name')), function(value, key) {
-      var n = value.querySelectorAll("a");
+      var n = value.querySelectorAll('a');
       if (n && n.length >= 1) n[0].innerText = jen.name;
       markJenlynized(value);
     });
     [].forEach.call(body.querySelectorAll(ignoreJenlynized('.username')), function(value, key) {
-      var n = value.querySelectorAll("b");
+      var n = value.querySelectorAll('b');
       if (n && n.length >= 1) n[0].innerText = jen.id;
       markJenlynized(value);
     });
@@ -67,7 +67,7 @@
     });
     // others home
     [].forEach.call(body.querySelectorAll(ignoreJenlynized('.ProfileHeaderCard-name')), function(value, key) {
-      var n = value.querySelectorAll("a");
+      var n = value.querySelectorAll('a');
       if (n && n.length >= 1) n[0].innerText = jen.name;
       markJenlynized(value);
     });
@@ -76,7 +76,7 @@
       markJenlynized(value);
     });
     [].forEach.call(body.querySelectorAll(ignoreJenlynized('.ProfileNameTruncated')), function(value, key) {
-      var n = value.querySelectorAll("a");
+      var n = value.querySelectorAll('a');
       if (n && n.length >= 1) n[0].innerText = jen.name;
       markJenlynized(value);
     });
@@ -86,7 +86,7 @@
     });
     // List
     [].forEach.call(body.querySelectorAll(ignoreJenlynized('.ListFollowCard-metadata')), function(value, key) {
-      var n = value.querySelectorAll("a");
+      var n = value.querySelectorAll('a');
       if (n && n.length >= 1) n[0].innerText = jen.name;
       markJenlynized(value);
     });
@@ -134,7 +134,7 @@
       jenlynizeProfileCard(value, jen);
     });
     [].forEach.call(body.querySelectorAll(ignoreJenlynized('.user-profile-link')), function(value, key) {
-      var n = value.querySelectorAll("b");
+      var n = value.querySelectorAll('b');
       if (n && n.length >= 1) {
         n[0].innerText = jen.name;
       } else {
@@ -152,7 +152,7 @@
   }
   
   function syncState() {
-    chrome.runtime.sendMessage({method: "getState"}, function(response) {
+    chrome.runtime.sendMessage({method: 'getState'}, function(response) {
       // options
       jen = response.jen;
       // on/off
