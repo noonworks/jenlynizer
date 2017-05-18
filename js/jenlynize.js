@@ -3,6 +3,10 @@
     return path + ':not(.' + jenlynized + ')';
   }
   
+  function markJenlynized(e) {
+    e.classList.add(jenlynized);
+  }
+  
   function jenlynizeTweet(tweet, jen) {
     [].forEach.call(tweet.querySelectorAll('.fullname'), function(value, key) {
       value.innerText = jen.name;
@@ -22,7 +26,7 @@
     [].forEach.call(tweet.querySelectorAll('.QuoteTweet-fullname'), function(value, key) {
       value.innerText = jen.name;
     });
-    tweet.classList.add(jenlynized);
+    markJenlynized(tweet);
   }
   
   function jenlynizeProfileCard(card, jen) {
@@ -36,7 +40,7 @@
     [].forEach.call(card.querySelectorAll('.ProfileCard-avatarImage'), function(value, key) {
       value.src = jen.avater;
     });
-    card.classList.add(jenlynized);
+    markJenlynized(card);
   }
   
   function jenlynizeHeaders(body, jen) {
@@ -44,62 +48,62 @@
     [].forEach.call(body.querySelectorAll(ignoreJenlynized('.DashboardProfileCard-name')), function(value, key) {
       var n = value.querySelectorAll("a");
       if (n && n.length >= 1) n[0].innerText = jen.name;
-      value.classList.add(jenlynized);
+      markJenlynized(value);
     });
     [].forEach.call(body.querySelectorAll(ignoreJenlynized('.username')), function(value, key) {
       var n = value.querySelectorAll("b");
       if (n && n.length >= 1) n[0].innerText = jen.id;
-      value.classList.add(jenlynized);
+      markJenlynized(value);
     });
     [].forEach.call(body.querySelectorAll(ignoreJenlynized('.DashboardProfileCard-avatarImage')), function(value, key) {
       value.src = jen.avater;
-      value.classList.add(jenlynized);
+      markJenlynized(value);
     });
     [].forEach.call(body.querySelectorAll(ignoreJenlynized('.Avatar')), function(value, key) {
       value.src = jen.avater;
-      value.classList.add(jenlynized);
+      markJenlynized(value);
     });
     // others home
     [].forEach.call(body.querySelectorAll(ignoreJenlynized('.ProfileHeaderCard-name')), function(value, key) {
       var n = value.querySelectorAll("a");
       if (n && n.length >= 1) n[0].innerText = jen.name;
-      value.classList.add(jenlynized);
+      markJenlynized(value);
     });
     [].forEach.call(body.querySelectorAll(ignoreJenlynized('.ProfileAvatar-image')), function(value, key) {
       value.src = jen.avater;
-      value.classList.add(jenlynized);
+      markJenlynized(value);
     });
     [].forEach.call(body.querySelectorAll(ignoreJenlynized('.ProfileNameTruncated')), function(value, key) {
       var n = value.querySelectorAll("a");
       if (n && n.length >= 1) n[0].innerText = jen.name;
-      value.classList.add(jenlynized);
+      markJenlynized(value);
     });
     [].forEach.call(body.querySelectorAll(ignoreJenlynized('.ProfileCardMini-avatarImage')), function(value, key) {
       value.src = jen.avater;
-      value.classList.add(jenlynized);
+      markJenlynized(value);
     });
     // List
     [].forEach.call(body.querySelectorAll(ignoreJenlynized('.ListFollowCard-metadata')), function(value, key) {
       var n = value.querySelectorAll("a");
       if (n && n.length >= 1) n[0].innerText = jen.name;
-      value.classList.add(jenlynized);
+      markJenlynized(value);
     });
     [].forEach.call(body.querySelectorAll(ignoreJenlynized('.avatar')), function(value, key) {
       value.src = jen.avater;
-      value.classList.add(jenlynized);
+      markJenlynized(value);
     });
     [].forEach.call(body.querySelectorAll(ignoreJenlynized('.ProfileListItem-avatar')), function(value, key) {
       value.src = jen.avater;
-      value.classList.add(jenlynized);
+      markJenlynized(value);
     });
     // moment
     [].forEach.call(body.querySelectorAll(ignoreJenlynized('.MomentUserByline-fullname')), function(value, key) {
       value.innerText = jen.name;
-      value.classList.add(jenlynized);
+      markJenlynized(value);
     });
     [].forEach.call(body.querySelectorAll(ignoreJenlynized('.MomentUserByline-avatar')), function(value, key) {
       value.src = jen.avater;
-      value.classList.add(jenlynized);
+      markJenlynized(value);
     });
   }
   
@@ -134,7 +138,7 @@
       } else {
         value.innerText = jen.name;
       }
-      value.classList.add(jenlynized);
+      markJenlynized(value);
     });
   }
   
