@@ -1,6 +1,9 @@
 (function(){
+  function ignoreJenlynized(path) {
+    return path + ':not(.' + jenlynized + ')';
+  }
+  
   function jenlynizeTweet(tweet, jen) {
-    if (tweet.classList.contains(jenlynized)) return;
     [].forEach.call(tweet.querySelectorAll('.fullname'), function(value, key) {
       value.innerText = jen.name;
     });
@@ -23,7 +26,6 @@
   }
   
   function jenlynizeProfileCard(card, jen) {
-    if (card.classList.contains(jenlynized)) return;
     [].forEach.call(card.querySelectorAll('.fullname'), function(value, key) {
       value.innerText = jen.name;
     });
@@ -39,76 +41,63 @@
   
   function jenlynizeHeaders(body, jen) {
     // home
-    [].forEach.call(body.querySelectorAll('.DashboardProfileCard-name'), function(value, key) {
-      if (value.classList.contains(jenlynized)) return;
+    [].forEach.call(body.querySelectorAll(ignoreJenlynized('.DashboardProfileCard-name')), function(value, key) {
       var n = value.querySelectorAll("a");
       if (n && n.length >= 1) n[0].innerText = jen.name;
       value.classList.add(jenlynized);
     });
-    [].forEach.call(body.querySelectorAll('.username'), function(value, key) {
-      if (value.classList.contains(jenlynized)) return;
+    [].forEach.call(body.querySelectorAll(ignoreJenlynized('.username')), function(value, key) {
       var n = value.querySelectorAll("b");
       if (n && n.length >= 1) n[0].innerText = jen.id;
       value.classList.add(jenlynized);
     });
-    [].forEach.call(body.querySelectorAll('.DashboardProfileCard-avatarImage'), function(value, key) {
-      if (value.classList.contains(jenlynized)) return;
+    [].forEach.call(body.querySelectorAll(ignoreJenlynized('.DashboardProfileCard-avatarImage')), function(value, key) {
       value.src = jen.avater;
       value.classList.add(jenlynized);
     });
-    [].forEach.call(body.querySelectorAll('.Avatar'), function(value, key) {
-      if (value.classList.contains(jenlynized)) return;
+    [].forEach.call(body.querySelectorAll(ignoreJenlynized('.Avatar')), function(value, key) {
       value.src = jen.avater;
       value.classList.add(jenlynized);
     });
     // others home
-    [].forEach.call(body.querySelectorAll('.ProfileHeaderCard-name'), function(value, key) {
-      if (value.classList.contains(jenlynized)) return;
+    [].forEach.call(body.querySelectorAll(ignoreJenlynized('.ProfileHeaderCard-name')), function(value, key) {
       var n = value.querySelectorAll("a");
       if (n && n.length >= 1) n[0].innerText = jen.name;
       value.classList.add(jenlynized);
     });
-    [].forEach.call(body.querySelectorAll('.ProfileAvatar-image'), function(value, key) {
-      if (value.classList.contains(jenlynized)) return;
+    [].forEach.call(body.querySelectorAll(ignoreJenlynized('.ProfileAvatar-image')), function(value, key) {
       value.src = jen.avater;
       value.classList.add(jenlynized);
     });
-    [].forEach.call(body.querySelectorAll('.ProfileNameTruncated'), function(value, key) {
-      if (value.classList.contains(jenlynized)) return;
+    [].forEach.call(body.querySelectorAll(ignoreJenlynized('.ProfileNameTruncated')), function(value, key) {
       var n = value.querySelectorAll("a");
       if (n && n.length >= 1) n[0].innerText = jen.name;
       value.classList.add(jenlynized);
     });
-    [].forEach.call(body.querySelectorAll('.ProfileCardMini-avatarImage'), function(value, key) {
-      if (value.classList.contains(jenlynized)) return;
+    [].forEach.call(body.querySelectorAll(ignoreJenlynized('.ProfileCardMini-avatarImage')), function(value, key) {
       value.src = jen.avater;
       value.classList.add(jenlynized);
     });
     // List
-    [].forEach.call(body.querySelectorAll('.ListFollowCard-metadata'), function(value, key) {
-      if (value.classList.contains(jenlynized)) return;
+    [].forEach.call(body.querySelectorAll(ignoreJenlynized('.ListFollowCard-metadata')), function(value, key) {
       var n = value.querySelectorAll("a");
       if (n && n.length >= 1) n[0].innerText = jen.name;
       value.classList.add(jenlynized);
     });
-    [].forEach.call(body.querySelectorAll('.avatar'), function(value, key) {
-      if (value.classList.contains(jenlynized)) return;
+    [].forEach.call(body.querySelectorAll(ignoreJenlynized('.avatar')), function(value, key) {
       value.src = jen.avater;
       value.classList.add(jenlynized);
     });
-    [].forEach.call(body.querySelectorAll('.ProfileListItem-avatar'), function(value, key) {
-      if (value.classList.contains(jenlynized)) return;
+    [].forEach.call(body.querySelectorAll(ignoreJenlynized('.ProfileListItem-avatar')), function(value, key) {
       value.src = jen.avater;
       value.classList.add(jenlynized);
     });
     // moment
-    [].forEach.call(body.querySelectorAll('.MomentUserByline-fullname'), function(value, key) {
-      if (value.classList.contains(jenlynized)) return;
+    [].forEach.call(body.querySelectorAll(ignoreJenlynized('.MomentUserByline-fullname')), function(value, key) {
       value.innerText = jen.name;
       value.classList.add(jenlynized);
     });
-    [].forEach.call(body.querySelectorAll('.MomentUserByline-avatar'), function(value, key) {
-      if (value.classList.contains(jenlynized)) return;
+    [].forEach.call(body.querySelectorAll(ignoreJenlynized('.MomentUserByline-avatar')), function(value, key) {
       value.src = jen.avater;
       value.classList.add(jenlynized);
     });
@@ -117,29 +106,28 @@
   function jenlynize(jen) {
     var body = document.querySelector('body');
     jenlynizeHeaders(body, jen);
-    [].forEach.call(document.querySelectorAll('.tweet'), function(value, key) {
+    [].forEach.call(document.querySelectorAll(ignoreJenlynized('.tweet')), function(value, key) {
       jenlynizeTweet(value, jen);
     });
-    [].forEach.call(body.querySelectorAll('.ActivityItem'), function(value, key) {
+    [].forEach.call(body.querySelectorAll(ignoreJenlynized('.ActivityItem')), function(value, key) {
       jenlynizeTweet(value, jen);
     });
-    [].forEach.call(body.querySelectorAll('.QuoteTweet'), function(value, key) {
+    [].forEach.call(body.querySelectorAll(ignoreJenlynized('.QuoteTweet')), function(value, key) {
       jenlynizeTweet(value, jen);
     });
-    [].forEach.call(body.querySelectorAll('.account-summary'), function(value, key) {
+    [].forEach.call(body.querySelectorAll(ignoreJenlynized('.account-summary')), function(value, key) {
       jenlynizeTweet(value, jen);
     });
-    [].forEach.call(body.querySelectorAll('.activity-user-profile-content'), function(value, key) {
+    [].forEach.call(body.querySelectorAll(ignoreJenlynized('.activity-user-profile-content')), function(value, key) {
       jenlynizeTweet(value, jen);
     });
-    [].forEach.call(body.querySelectorAll('.typeahead-account-item'), function(value, key) {
+    [].forEach.call(body.querySelectorAll(ignoreJenlynized('.typeahead-account-item')), function(value, key) {
       jenlynizeTweet(value, jen);
     });
-    [].forEach.call(body.querySelectorAll('.ProfileCard'), function(value, key) {
+    [].forEach.call(body.querySelectorAll(ignoreJenlynized('.ProfileCard')), function(value, key) {
       jenlynizeProfileCard(value, jen);
     });
-    [].forEach.call(body.querySelectorAll('.user-profile-link'), function(value, key) {
-      if (value.classList.contains(jenlynized)) return;
+    [].forEach.call(body.querySelectorAll(ignoreJenlynized('.user-profile-link')), function(value, key) {
       var n = value.querySelectorAll("b");
       if (n && n.length >= 1) {
         n[0].innerText = jen.name;
