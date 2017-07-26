@@ -8,21 +8,21 @@ function readForm() {
 }
 
 function save() {
-  var jen = readForm();
-  var str = JSON.stringify(jen);
+  const jen = readForm();
+  const str = JSON.stringify(jen);
   //console.log(str);
   localStorage.setItem(LS_KEY, str);
 }
 
 function applyForm() {
-  var str = localStorage.getItem(LS_KEY);
-  var jen = JSON.parse(str);
+  const str = localStorage.getItem(LS_KEY);
+  const jen = JSON.parse(str);
   document.getElementById('fullname').value = jen.name;
   document.getElementById('accountid').value = jen.id;
   document.getElementById('iconUrl').value = jen.avater;
 }
 
-var LS_KEY = 'jenlynizer';
+const LS_KEY = 'jenlynizer';
 
 applyForm();
 document.getElementById('save').addEventListener('click', save);

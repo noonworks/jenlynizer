@@ -3,7 +3,7 @@ function saveEnable(e) {
 }
 
 function readEnable() {
-  var str = localStorage.getItem(LS_KEY_EN);
+  const str = localStorage.getItem(LS_KEY_EN);
   return (str === 'true');
 }
 
@@ -18,12 +18,12 @@ function iconClicked() {
 }
 
 function getOption() {
-  var str = localStorage.getItem(LS_KEY);
+  const str = localStorage.getItem(LS_KEY);
   if (str) {
     return JSON.parse(str);
   }
-  var str = JSON.stringify(DEFAULT_VALUE);
-  localStorage.setItem(LS_KEY, str);
+  const def_str = JSON.stringify(DEFAULT_VALUE);
+  localStorage.setItem(LS_KEY, def_str);
   return DEFAULT_VALUE;
 }
 
@@ -35,16 +35,16 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
   }
 });
 
-var LS_KEY = 'jenlynizer';
-var LS_KEY_EN = LS_KEY + '_enable';
-var DEFAULT_VALUE = {
+const LS_KEY = 'jenlynizer';
+const LS_KEY_EN = LS_KEY + '_enable';
+const DEFAULT_VALUE = {
   version: 1,
   name : 'ジェンリンス',
   id : 'jenlyns',
   avater :'https://pbs.twimg.com/media/C--GAqDVoAAiVsY.jpg'
 };
 
-var enable = readEnable();
+let enable = readEnable();
 saveEnable(enable);
 setIcon(enable);
 chrome.browserAction.onClicked.addListener(iconClicked);
