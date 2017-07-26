@@ -1,20 +1,31 @@
+//
+// Message listener
+//
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+  if (request.method == 'getState'){
+    sendResponse({enable: getEnable(), option: getOption()});
+  } else {
+    sendResponse({});
+  }
+});
+
+//
+// Save/Get from local storage
+//
+const LS_KEY = 'jenlynizer';
+const LS_KEY_EN = LS_KEY + '_enable';
+let _enable = 'not initialized';
+
+function getEnable() {
+  if (typeof(_enable) != 'boolean') {
+    const str = localStorage.getItem(LS_KEY_EN);
+    _enable = (str === 'true');
+  }
+  return _enable;
+}
 function saveEnable(e) {
-  localStorage.setItem(LS_KEY_EN, e);
-}
-
-function readEnable() {
-  const str = localStorage.getItem(LS_KEY_EN);
-  return (str === 'true');
-}
-
-function setIcon(e) {
-  chrome.browserAction.setIcon({ path:'img/i96' + (e ? '' : 'off') + '.png' });
-}
-
-function iconClicked() {
-  enable = !enable;
-  saveEnable(enable);
-  setIcon(enable);
+  _enable = e;
+  localStorage.setItem(LS_KEY_EN, _enable);
 }
 
 function getOption() {
@@ -26,17 +37,6 @@ function getOption() {
   localStorage.setItem(LS_KEY, def_str);
   return DEFAULT_VALUE;
 }
-
-chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
-  if (request.method == 'getState'){
-    sendResponse({enable: enable, jen: getOption()});
-  } else {
-    sendResponse({});
-  }
-});
-
-const LS_KEY = 'jenlynizer';
-const LS_KEY_EN = LS_KEY + '_enable';
 const DEFAULT_VALUE = {
   version: 1,
   name : 'ジェンリンス',
@@ -44,7 +44,21 @@ const DEFAULT_VALUE = {
   avater :'https://pbs.twimg.com/media/C--GAqDVoAAiVsY.jpg'
 };
 
-let enable = readEnable();
-saveEnable(enable);
-setIcon(enable);
+//
+// Icon functions
+//
+function setIcon(e) {
+  chrome.browserAction.setIcon({ path:'img/i96' + (e ? '' : 'off') + '.png' });
+}
+function iconClicked() {
+  const new_enable = ! getEnable();
+  saveEnable(new_enable);
+  setIcon(new_enable);
+}
+
+//
+// Initialization
+//
+saveEnable(getEnable());
+setIcon(getEnable());
 chrome.browserAction.onClicked.addListener(iconClicked);

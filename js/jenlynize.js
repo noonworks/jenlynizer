@@ -185,7 +185,7 @@
         intervalID = -1;
         return;
       }
-      setOption(response.jen);
+      setOption(response.option);
       setEnable(response.enable);
       // on/off
       const enbl = getEnable();
