@@ -10,36 +10,36 @@
   }
   
   function jenlynizeTweet(tweet, jen) {
-    for (var value of tweet.querySelectorAll('.fullname')) {
+    for (let value of tweet.querySelectorAll('.fullname')) {
       value.innerText = jen.name;
     }
-    for (var value of tweet.querySelectorAll('.username')) {
-      var n = value.querySelectorAll('b');
+    for (let value of tweet.querySelectorAll('.username')) {
+      const n = value.querySelectorAll('b');
       if (n && n.length >= 1) n[0].innerText = jen.id;
     }
-    for (var value of tweet.querySelectorAll('.avatar')) {
+    for (let value of tweet.querySelectorAll('.avatar')) {
       value.src = jen.avater;
     }
     // RT
-    for (var value of tweet.querySelectorAll('.js-retweet-text')) {
-      var n = value.querySelectorAll('b');
+    for (let value of tweet.querySelectorAll('.js-retweet-text')) {
+      const n = value.querySelectorAll('b');
       if (n && n.length >= 1) n[0].innerText = jen.name;
     }
-    for (var value of tweet.querySelectorAll('.QuoteTweet-fullname')) {
+    for (let value of tweet.querySelectorAll('.QuoteTweet-fullname')) {
       value.innerText = jen.name;
     }
     markJenlynized(tweet);
   }
   
   function jenlynizeProfileCard(card, jen) {
-    for (var value of card.querySelectorAll('.fullname')) {
+    for (let value of card.querySelectorAll('.fullname')) {
       value.innerText = jen.name;
     }
-    for (var value of card.querySelectorAll('.username')) {
-      var n = value.querySelectorAll('b');
+    for (let value of card.querySelectorAll('.username')) {
+      const n = value.querySelectorAll('b');
       if (n && n.length >= 1) n[0].innerText = jen.id;
     }
-    for (var value of card.querySelectorAll('.ProfileCard-avatarImage')) {
+    for (let value of card.querySelectorAll('.ProfileCard-avatarImage')) {
       value.src = jen.avater;
     }
     markJenlynized(card);
@@ -47,94 +47,95 @@
   
   function jenlynizeHeaders(body, jen) {
     // home
-    for (var value of body.querySelectorAll(ignoreJenlynized('.DashboardProfileCard-name'))) {
-      var n = value.querySelectorAll('a');
+    for (let value of body.querySelectorAll(ignoreJenlynized('.DashboardProfileCard-name'))) {
+      const n = value.querySelectorAll('a');
       if (n && n.length >= 1) n[0].innerText = jen.name;
       markJenlynized(value);
     }
-    for (var value of body.querySelectorAll(ignoreJenlynized('.username'))) {
-      var n = value.querySelectorAll('b');
+    for (let value of body.querySelectorAll(ignoreJenlynized('.username'))) {
+      const n = value.querySelectorAll('b');
       if (n && n.length >= 1) n[0].innerText = jen.id;
       markJenlynized(value);
     }
-    for (var value of body.querySelectorAll(ignoreJenlynized('.DashboardProfileCard-avatarImage'))) {
+    for (let value of body.querySelectorAll(ignoreJenlynized('.DashboardProfileCard-avatarImage'))) {
       value.src = jen.avater;
       markJenlynized(value);
     }
-    for (var value of body.querySelectorAll(ignoreJenlynized('.Avatar'))) {
+    for (let value of body.querySelectorAll(ignoreJenlynized('.Avatar'))) {
       value.src = jen.avater;
       markJenlynized(value);
     }
     // others home
-    for (var value of body.querySelectorAll(ignoreJenlynized('.ProfileHeaderCard-name'))) {
-      var n = value.querySelectorAll('a');
+    for (let value of body.querySelectorAll(ignoreJenlynized('.ProfileHeaderCard-name'))) {
+      const n = value.querySelectorAll('a');
       if (n && n.length >= 1) n[0].innerText = jen.name;
       markJenlynized(value);
     }
-    for (var value of body.querySelectorAll(ignoreJenlynized('.ProfileAvatar-image'))) {
+    for (let value of body.querySelectorAll(ignoreJenlynized('.ProfileAvatar-image'))) {
       value.src = jen.avater;
       markJenlynized(value);
     }
-    for (var value of body.querySelectorAll(ignoreJenlynized('.ProfileNameTruncated'))) {
-      var n = value.querySelectorAll('a');
+    for (let value of body.querySelectorAll(ignoreJenlynized('.ProfileNameTruncated'))) {
+      const n = value.querySelectorAll('a');
       if (n && n.length >= 1) n[0].innerText = jen.name;
       markJenlynized(value);
     }
-    for (var value of body.querySelectorAll(ignoreJenlynized('.ProfileCardMini-avatarImage'))) {
+    for (let value of body.querySelectorAll(ignoreJenlynized('.ProfileCardMini-avatarImage'))) {
       value.src = jen.avater;
       markJenlynized(value);
     }
     // List
-    for (var value of body.querySelectorAll(ignoreJenlynized('.ListFollowCard-metadata'))) {
-      var n = value.querySelectorAll('a');
+    for (let value of body.querySelectorAll(ignoreJenlynized('.ListFollowCard-metadata'))) {
+      const n = value.querySelectorAll('a');
       if (n && n.length >= 1) n[0].innerText = jen.name;
       markJenlynized(value);
     }
-    for (var value of body.querySelectorAll(ignoreJenlynized('.avatar'))) {
+    for (let value of body.querySelectorAll(ignoreJenlynized('.avatar'))) {
       value.src = jen.avater;
       markJenlynized(value);
     }
-    for (var value of body.querySelectorAll(ignoreJenlynized('.ProfileListItem-avatar'))) {
+    for (let value of body.querySelectorAll(ignoreJenlynized('.ProfileListItem-avatar'))) {
       value.src = jen.avater;
       markJenlynized(value);
     }
     // moment
-    for (var value of body.querySelectorAll(ignoreJenlynized('.MomentUserByline-fullname'))) {
+    for (let value of body.querySelectorAll(ignoreJenlynized('.MomentUserByline-fullname'))) {
       value.innerText = jen.name;
       markJenlynized(value);
     }
-    for (var value of body.querySelectorAll(ignoreJenlynized('.MomentUserByline-avatar'))) {
+    for (let value of body.querySelectorAll(ignoreJenlynized('.MomentUserByline-avatar'))) {
       value.src = jen.avater;
       markJenlynized(value);
     }
   }
   
-  function jenlynize(jen) {
-    var body = document.querySelector('body');
+  function doJenlynize() {
+    const jen = getOption();
+    const body = document.querySelector('body');
     jenlynizeHeaders(body, jen);
-    for (var value of document.querySelectorAll(ignoreJenlynized('.tweet'))) {
+    for (let value of document.querySelectorAll(ignoreJenlynized('.tweet'))) {
       jenlynizeTweet(value, jen);
     }
-    for (var value of body.querySelectorAll(ignoreJenlynized('.ActivityItem'))) {
+    for (let value of body.querySelectorAll(ignoreJenlynized('.ActivityItem'))) {
       jenlynizeTweet(value, jen);
     }
-    for (var value of body.querySelectorAll(ignoreJenlynized('.QuoteTweet'))) {
+    for (let value of body.querySelectorAll(ignoreJenlynized('.QuoteTweet'))) {
       jenlynizeTweet(value, jen);
     }
-    for (var value of body.querySelectorAll(ignoreJenlynized('.account-summary'))) {
+    for (let value of body.querySelectorAll(ignoreJenlynized('.account-summary'))) {
       jenlynizeTweet(value, jen);
     }
-    for (var value of body.querySelectorAll(ignoreJenlynized('.activity-user-profile-content'))) {
+    for (let value of body.querySelectorAll(ignoreJenlynized('.activity-user-profile-content'))) {
       jenlynizeTweet(value, jen);
     }
-    for (var value of body.querySelectorAll(ignoreJenlynized('.typeahead-account-item'))) {
+    for (let value of body.querySelectorAll(ignoreJenlynized('.typeahead-account-item'))) {
       jenlynizeTweet(value, jen);
     }
-    for (var value of body.querySelectorAll(ignoreJenlynized('.ProfileCard'))) {
+    for (let value of body.querySelectorAll(ignoreJenlynized('.ProfileCard'))) {
       jenlynizeProfileCard(value, jen);
     }
-    for (var value of body.querySelectorAll(ignoreJenlynized('.user-profile-link'))) {
-      var n = value.querySelectorAll('b');
+    for (let value of body.querySelectorAll(ignoreJenlynized('.user-profile-link'))) {
+      const n = value.querySelectorAll('b');
       if (n && n.length >= 1) {
         n[0].innerText = jen.name;
       } else {
@@ -144,35 +145,57 @@
     }
   }
   
-  function update() {
-    if (updating) return;
-    updating = true;
-    if (enable) jenlynize(jen);
-    updating = false;
+  //
+  // Jenlynize
+  //
+  let _jenlynizing = false;
+  function jenlynize() {
+    if (_jenlynizing) return;
+    _jenlynizing = true;
+    if (getEnable()) doJenlynize();
+    _jenlynizing = false;
   }
   
+  //
+  // Set/Get option values
+  //
+  let _enable = false;
+  function setEnable(enable) {
+    _enable = enable;
+  }
+  function getEnable() {
+    return _enable;
+  }
+  let _option = {};
+  function setOption(option) {
+    _option = option;
+  }
+  function getOption() {
+    return _option;
+  }
+  
+  //
+  // Get options from background (Cycle)
+  //
+  let intervalID = -1;
   function syncState() {
     chrome.runtime.sendMessage({method: 'getState'}, function(response) {
-      // options
-      jen = response.jen;
+      if (! response) {
+        clearInterval(intervalID);
+        intervalID = -1;
+        return;
+      }
+      setOption(response.option);
+      setEnable(response.enable);
       // on/off
-      enable = response.enable;
-      if (enable && intervalID == -1) {
-        intervalID = window.setInterval(update, 100);
-      } else if (!enable && intervalID != -1) {
+      const enbl = getEnable();
+      if (enbl && intervalID == -1) {
+        intervalID = window.setInterval(jenlynize, 100);
+      } else if (!enbl && intervalID != -1) {
         clearInterval(intervalID);
         intervalID = -1
       }
     });
   }
-  
-  function initialize() {
-    window.setInterval(syncState, 100);
-  }
-  
-  var intervalID = -1;
-  var updating = false;
-  var jen = {};
-  var enable = 'dummy';
-  document.addEventListener('DOMContentLoaded', initialize);
+  document.addEventListener('DOMContentLoaded', function() { window.setInterval(syncState, 100); });
 })();
