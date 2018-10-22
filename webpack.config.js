@@ -4,7 +4,7 @@ module.exports = {
     entry: {
         options: './src/options.ts',
         jenlynize: './src/jenlynize.js',
-        background: './src/background.js'
+        background: './src/background_entry.ts'
     },
     module: {
         rules: [
