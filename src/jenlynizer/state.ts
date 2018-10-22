@@ -1,9 +1,12 @@
 import { Option } from '../option';
 import { StateMessage } from '../state_message';
 
+type Callback = (state: State) => void;
+
 export class State {
   private option: Option | null = null;
   private enabled: boolean = false;
+  private callback: Callback | null = null;
 
   constructor() {
     document.addEventListener('DOMContentLoaded', () => {
@@ -19,6 +22,10 @@ export class State {
     return this.enabled;
   }
 
+  public setCallback(callback: Callback) {
+    this.callback = callback;
+  }
+
   private sync(): void {
     chrome.runtime.sendMessage({ method: 'getState' }, (response: StateMessage) => {
       if (!response) {
@@ -28,6 +35,9 @@ export class State {
       this.option = response.option;
       this.enabled = response.enable;
       // console.log('get state. ', response);
+      if (this.callback) {
+        this.callback(this);
+      }
     });
   }
 }
