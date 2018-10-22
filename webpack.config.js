@@ -3,7 +3,7 @@ const path = require('path');
 module.exports = {
     entry: {
         options: './src/options.ts',
-        jenlynize: './src/jenlynize.js',
+        jenlynize: './src/jenlynize_entry.ts',
         background: './src/background_entry.ts'
     },
     module: {
