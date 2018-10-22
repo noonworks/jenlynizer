@@ -20,33 +20,42 @@ export class Jenlynizer implements IJenlynizer {
   private jenlynizing: boolean = false;
 
   private jenlynizeTweet(tweet: HTMLElement, option: Option) {
+    let jenlynizedAny = false;
     tweet.querySelectorAll('.fullname').forEach((value) => {
       (value as HTMLElement).innerText = option.name;
+      jenlynizedAny = true;
     });
     tweet.querySelectorAll('.username').forEach((value) => {
       const n = value.querySelectorAll('b');
       if (n && n.length >= 1) {
         n[0].innerText = option.id;
+        jenlynizedAny = true;
       }
     });
     tweet.querySelectorAll('.avatar').forEach((value) => {
       (value as HTMLImageElement).src = option.avater;
+      jenlynizedAny = true;
     });
     // RT
     tweet.querySelectorAll('.js-retweet-text').forEach((value) => {
       const n = value.querySelectorAll('b');
       if (n && n.length >= 1) {
         n[0].innerText = option.name;
+        jenlynizedAny = true;
       }
     });
     tweet.querySelectorAll('.QuoteTweet-fullname').forEach((value) => {
       (value as HTMLImageElement).innerText = option.name;
+      jenlynizedAny = true;
     });
     // thread icon
     tweet.querySelectorAll('.avatar--circular').forEach((value) => {
       (value as HTMLImageElement).src = option.avater;
+      jenlynizedAny = true;
     });
-    markJenlynized(tweet);
+    if (jenlynizedAny) {
+      markJenlynized(tweet);
+    }
   }
 
   private jenlynizeHeaders(body: HTMLElement, option: Option) {
@@ -136,6 +145,7 @@ export class Jenlynizer implements IJenlynizer {
     '.account-summary',
     '.activity-user-profile-content',
     '.typeahead-account-item',
+    '.DashUserDropdown-userInfo',
   ];
 
   private doJenlynize(option: Option): void {
