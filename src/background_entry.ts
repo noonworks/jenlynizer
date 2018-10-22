@@ -1,4 +1,5 @@
 import { Background } from './background';
+import { StateMessage } from './state_message';
 
 //
 // Initialization
@@ -16,7 +17,7 @@ chrome.browserAction.onClicked.addListener(() => { bg.iconClicked(); });
 //
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.method === 'getState') {
-    sendResponse({ enable: bg.getEnabled(), option: bg.getOption() });
+    sendResponse({ enable: bg.getEnabled(), option: bg.getOption() } as StateMessage);
   } else {
     sendResponse({});
   }
