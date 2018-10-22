@@ -42,6 +42,10 @@ export class Jenlynizer implements IJenlynizer {
     tweet.querySelectorAll('.QuoteTweet-fullname').forEach((value) => {
       (value as HTMLImageElement).innerText = option.name;
     });
+    // thread icon
+    tweet.querySelectorAll('.avatar--circular').forEach((value) => {
+      (value as HTMLImageElement).src = option.avater;
+    });
     markJenlynized(tweet);
   }
 
