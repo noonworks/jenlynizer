@@ -1,3 +1,6 @@
-import { State } from './jenlynizer/state';
+import { Scheduler } from './jenlynizer/scheduler';
+import { Jenlynizer } from './jenlynizer/index';
 
-const state = new State();
+const scheduler = new Scheduler();
+const jenlynizer = new Jenlynizer();
+scheduler.setJenlynizer(jenlynizer);
